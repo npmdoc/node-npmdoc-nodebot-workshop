@@ -1,0 +1,17 @@
+{
+    "buildNpmdoc":"nodebot-workshop",
+    "devDependencies": {
+        "nodebot-workshop": "*",
+        "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "utility2": "kaizhu256/node-utility2#alpha"
+    },
+    "name":"npmdoc-nodebot-workshop",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npmdoc/node-npmdoc-nodebot-workshop"
+    },
+    "scripts": {
+        "build-ci": "utility2 shReadmeTest build_ci.sh"
+    },
+    "version": "0.0.1"
+}
