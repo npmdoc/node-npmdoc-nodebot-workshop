@@ -1,7 +1,7 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
     "buildNpmdoc": "nodebot-workshop",
-    "description": "api documentation for [nodebot-workshop (v3.2.0)](https://github.com/tableflip/nodebot-workshop#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-nodebot-workshop.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nodebot-workshop) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nodebot-workshop.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nodebot-workshop)",
+    "description": "#### api documentation for  [nodebot-workshop (v3.2.0)](https://github.com/tableflip/nodebot-workshop#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-nodebot-workshop.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nodebot-workshop) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nodebot-workshop.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nodebot-workshop)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "nodebot-workshop": "*",
@@ -36,5 +36,5 @@
         "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
         "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
-    "version": "0.0.1"
+    "version": "0.0.2"
 }
