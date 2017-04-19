@@ -1673,7 +1673,7 @@
   // Either an IO instance was provided or isOnBoard is true
   if (!opts.port &amp;&amp; this.io !== null) {
     /* istanbul ignore next */
-    this.info("Device(s)", chalk.grey(this.io.name || "unknown"));
+    this.info("Available", chalk.grey(this.io.name || "unknown"));
 
     ["connect", "ready"].forEach(function(type) {
       this.io.once(type, function() {
@@ -2517,6 +2517,11 @@
       requestPin: false
     }
   );
+
+  if (nonAddressable.includes(opts.controller) &amp;&amp;
+      typeof this.address === "undefined") {
+    this.address = Fn.uid();
+  }
 
   expander = active.get(this.address);
 
@@ -5883,7 +5888,24 @@
 
   return this;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// checks that the submission file actually exists
+exercise = filecheck(exercise)
+
+// this actually runs the solution
+exercise.addProcessor(function (mode, callback) {
+// includes the solution to run it
+proxyquire(path.join(process.cwd(), exercise.args[0]), {'johnny-five': five.<span class="apidocCodeKeywordSpan">spyOn<!--
+span-->('Led')})
+
+setTimeout(function() {
+  console.log(exercise.__('please_wait'))
+}, 1000)
+
+// need a better way of detecting when we are done..
+setTimeout(function() {
+...</span></pre></li>
     </ul>
 
 
@@ -6476,7 +6498,24 @@
 
     return matches === this.callCount;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (led.blink.called) {
+    test.equals(led.blink.getCall(0).args[0], 1000, 'led_flashing')
+  } else {
+    test.equals(led.strobe.getCall(0).args[0], 1000, 'led_flashing')
+  }
+
+  // should have set pin 13 into digital output mode
+  test.truthy(io.pinMode.<span class="apidocCodeKeywordSpan">calledWith</span>(13, io.MODES.OUTPUT), 'pin_mode', {pin:
+2, mode: 'OUTPUT'})
+
+  // should have turned pin 13 on and off
+  test.truthy(io.digitalWrite.calledWith(13, io.HIGH), 'pin_turned_on')
+  test.truthy(io.digitalWrite.calledWith(13, io.LOW), 'pin_turned_off')
+
+  done()
+}))
+...</pre></li>
     </ul>
 
 
@@ -6608,7 +6647,22 @@
                             this.returnValues[i], this.exceptions[i],
                             this.callIds[i], this.stacks[i]);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var led = five.Led.instances[0]
+
+test.truthy(led, 'create_led_instance')
+test.equals(led.pin, pins.led, 'connect_led_to_pin', {pin: pins.pins})
+test.truthy(led.strobe.called || led.blink.called, 'led_flashing')
+
+if (led.blink.called) {
+  test.equals(led.blink.<span class="apidocCodeKeywordSpan">getCall</span>(0).args[0], 1000, 'led_flashing')
+} else {
+  test.equals(led.strobe.getCall(0).args[0], 1000, 'led_flashing')
+}
+
+// should have set pin 13 into digital output mode
+test.truthy(io.pinMode.calledWith(13, io.MODES.OUTPUT), 'pin_mode', {pin: 2, mode: 'OUTPUT'})
+...</pre></li>
     </ul>
 
 
